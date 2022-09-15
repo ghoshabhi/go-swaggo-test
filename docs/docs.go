@@ -85,22 +85,13 @@ const docTemplate = `{
                         "name": "some_id",
                         "in": "path",
                         "required": true
-                    },
-                    {
-                        "description": "Some ID",
-                        "name": "some_id",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/web.Pet"
-                        }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "ok",
+                        "description": "OK",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/web.PaginatedResponse-web_Pet"
                         }
                     },
                     "400": {
@@ -186,6 +177,34 @@ const docTemplate = `{
                 },
                 "errorMessage": {
                     "type": "string"
+                }
+            }
+        },
+        "web.PaginatedResponse-web_Pet": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/web.Pet"
+                    }
+                },
+                "pagination": {
+                    "$ref": "#/definitions/web.Pagination"
+                }
+            }
+        },
+        "web.Pagination": {
+            "type": "object",
+            "properties": {
+                "index": {
+                    "type": "integer"
+                },
+                "size": {
+                    "type": "integer"
+                },
+                "total": {
+                    "type": "integer"
                 }
             }
         },

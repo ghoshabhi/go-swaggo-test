@@ -9,6 +9,24 @@ definitions:
       errorMessage:
         type: string
     type: object
+  web.PaginatedResponse-web_Pet:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/web.Pet'
+        type: array
+      pagination:
+        $ref: '#/definitions/web.Pagination'
+    type: object
+  web.Pagination:
+    properties:
+      index:
+        type: integer
+      size:
+        type: integer
+      total:
+        type: integer
+    type: object
   web.Pet:
     properties:
       category:
@@ -103,19 +121,13 @@ paths:
         name: some_id
         required: true
         type: integer
-      - description: Some ID
-        in: body
-        name: some_id
-        required: true
-        schema:
-          $ref: '#/definitions/web.Pet'
       produces:
       - application/json
       responses:
         "200":
-          description: ok
+          description: OK
           schema:
-            type: string
+            $ref: '#/definitions/web.PaginatedResponse-web_Pet'
         "400":
           description: We need ID!!
           schema:

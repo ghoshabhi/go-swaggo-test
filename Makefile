@@ -1,2 +1,2 @@
 sdocs:
-	swag init --parseDependency --parseInternal -g cmd/api/main.go
+	swag init --parseDependency --parseInternal --dir ./cmd/api
