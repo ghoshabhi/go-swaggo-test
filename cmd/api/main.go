@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/ghoshabhi/go-swaggo-test/api"
@@ -24,5 +25,6 @@ func main() {
 	http.HandleFunc("/testapi/get-string-by-int/", api.GetStringByInt)
 	http.HandleFunc("//testapi/get-struct-array-by-string/", api.GetStructArrayByString)
 	http.HandleFunc("/testapi/upload", api.Upload)
+	fmt.Println("server listening on :8080")
 	http.ListenAndServe(":8080", nil)
 }
