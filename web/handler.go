@@ -48,3 +48,13 @@ type RevValue struct {
 
 	Data int `json:"Data"`
 }
+
+type Pagination struct {
+	Index int `json:"index"`
+	Size  int `json:"size"`
+	Total int `json:"total"`
+}
+type PaginatedResponse[T any] struct {
+	Data       []T        `json:"data"`
+	Pagination Pagination `json:"pagination"`
+}

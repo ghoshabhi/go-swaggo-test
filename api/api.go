@@ -7,21 +7,6 @@ import (
 	"github.com/ghoshabhi/go-swaggo-test/web"
 )
 
-type Pagination struct {
-	Index int `json:"index"`
-	Size  int `json:"size"`
-	Total int `json:"total"`
-}
-type PaginatedResponse[T any] struct {
-	Data       []T        `json:"data"`
-	Pagination Pagination `json:"pagination"`
-}
-
-type ResponseItem struct {
-	ID    int
-	Value string
-}
-
 // GetStringByInt example
 // @Summary Add a new pet to the store
 // @Description get string by ID
@@ -29,7 +14,7 @@ type ResponseItem struct {
 // @Accept  json
 // @Produce  json
 // @Param   some_id      path   int     true  "Some ID"
-// @Success 200 {object} PaginatedResponse[ResponseItem]
+// @Success 200 {object} web.PaginatedResponse[web.ResponseItem]
 // @Failure 400 {object} web.APIError "We need ID!!"
 // @Failure 404 {object} web.APIError "Can not find ID"
 // @Router /testapi/get-string-by-int/{some_id} [get]
